@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tienda</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════
+       NAVBAR
+  ═══════════════════════════════════ -->
+  <nav>
+    <a class="nav-logo" > <img src="img/logo.png" alt=""></a>
+    <ul class="nav-links">
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Nosotros</a></li>
+      <li><a href="#">Contacto</a></li>
+      <li><a href="#">Catalogo</a></li>
+      <input type="text" placeholder="Buscar...">
+<button>Buscar</button>
+      
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-login" onclick="openLogin()">Iniciar Sesión</button>
+      <button class="cart-btn" onclick="openCart()">
+        🛒
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+
+
+
+
+  
+  <!-- ═══════════════════════════════════
+       HERO — CARRUSEL
+  ═══════════════════════════════════ -->
+  <div class="hero">
+    <div class="slides" id="slides">
+
+
+
+      <!-- Slide 1 -->
+      <div class="slide">
+        <div class="slide-bg"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <div class="slide-tag">Nueva Colección 2025</div>
+          <h1 class="slide-title">El Arte<br>del Estilo<br>Masculino</h1>
+          <p class="slide-desc">Piezas seleccionadas para el hombre contemporáneo que entiende que la elegancia no es una opción, es una filosofía.</p>
+          <button class="btn-hero">ver catalogo</button>
+        </div>
+        <div class="slide-product">
+        <img src="img/slide1.jpeg" alt="">
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide">
+        <div class="slide-bg"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <div class="slide-tag">Accesorios Premium</div>
+          <h1 class="slide-title">Detalles<br>que<br>Distinguen</h1>
+          <p class="slide-desc">pulceras , Relojes, cinturones y billeteras crafteadas con materiales de la más alta calidad. El lujo en cada detalle.</p>
+          <button class="btn-hero">Ver Accesorios</button>
+        </div>
+        <div class="slide-product">
+       <img src="img/slide2.jpeg" alt="">
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide">
+        <div class="slide-bg"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <div class="slide-tag">deportivo</div>
+          <h1 class="slide-title">Casual<br>con<br>Carácter</h1>
+          <p class="slide-desc">tennis deportivos para que puedas sentirte mas comodo cada dia y puedas disfrutar de tus dias</p>
+          <button class="btn-hero">Ver tennis</button>
+        </div>
+        <div class="slide-product">
+         
+
+          <img src="img/slide3.png" alt="">
+        </div>
+      </div>
+
+    </div><!-- /slides -->
+
+    <!-- Controles del carrusel -->
+    <div class="carousel-controls">
+      <button class="carousel-btn" onclick="prevSlide()">&#8592;</button>
+      <div class="carousel-dots" id="dots">
+        <div class="dot active" onclick="goSlide(0)"></div>
+        <div class="dot" onclick="goSlide(1)"></div>
+        <div class="dot" onclick="goSlide(2)"></div>
+      </div>
+      <button class="carousel-btn" onclick="nextSlide()">&#8594;</button>
+    </div>
+  </div><!-- /hero -->
+
+
+
+
+  <!-- ═══════════════════════════════════
+       Marcas
+  ═══════════════════════════════════ -->
+  <div class="categories-strip">
+    <div class="cat-item">
+      <div class="cat-icon">🧥</div>
+      <div class="cat-name">pantalones y bermudas</div>
+     
+    </div>
+    <div class="cat-item">
+      <div class="cat-icon">👔</div>
+      <div class="cat-name">Camisas y Polos</div>
+     
+    </div>
+    <div class="cat-item">
+      <div class="cat-icon">👖</div>
+      <div class="cat-name">zapatos</div>
+      
+    </div>
+    <div class="cat-item">
+      <div class="cat-icon">⌚</div>
+      <div class="cat-name">Accesorios</div>
+     
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       PRODUCTOS
+  ═══════════════════════════════════ -->
+  <section class="products-section">
+    <div class="section-label"><b>Solo para ti</b></div>
+    <div class="section-title">Piezas Destacadas</div>
+
+    <!-- Filtros -->
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterProducts(this, 'all')">Todos</button>
+      <button class="filter-btn" onclick="filterProducts(this, 'ropa')">Ropa</button>
+      <button class="filter-btn" onclick="filterProducts(this, 'accesorios')">Accesorios</button>
+      <button class="filter-btn" onclick="filterProducts(this, 'calzado')">Calzado</button>
+      <button class="filter-btn" onclick="filterProducts(this, 'sale')">Pantalones</button>
+       
+    </div>
+
+    <!-- Grid de productos (llenado por JS) -->
+    <div class="products-grid" id="productsGrid"></div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       MODAL — DETALLE DE PRODUCTO
+  ═══════════════════════════════════ -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-img-col" id="modalImg"></div>
+      <div class="modal-info-col" id="modalInfo"></div>
+     
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       CARRITO LATERAL
+  ═══════════════════════════════════ -->
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>Tu Carrito</h2>
+      <button class="cart-close" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-subtotal">
+        <span class="cart-subtotal-label">Subtotal</span>
+        <span class="cart-subtotal-value" id="cartTotal">$0</span>
+      </div>
+      <button class="btn-checkout">Finalizar Compra</button>
+      <button class="btn-continue" onclick="closeCart()">Seguir Comprando</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       MODAL — INICIO DE SESIÓN
+  ═══════════════════════════════════ -->
+  <div class="login-overlay" id="loginOverlay">
+    <div class="login-box">
+      <button class="login-close" onclick="closeLogin()">✕</button>
+      <div class="login-logo"><img src="img/logo.png" alt=""></div>
+      <div class="login-subtitle">Accede a tu cuenta</div>
+
+      <div class="login-tabs">
+        <button class="login-tab active" onclick="switchTab('login')">Iniciar Sesión</button>
+        <button class="login-tab" onclick="switchTab('register')">Crear Cuenta</button>
+      </div>
+
+      <!-- Tab: Login -->
+      <div class="tab-content active" id="tab-login">
+        <div class="form-group">
+          <label class="form-label">Correo Electrónico</label>
+          <input type="email" class="form-input" placeholder="tu@correo.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Contraseña</label>
+          <input type="password" class="form-input" placeholder="••••••••">
+        </div>
+        <button class="btn-submit" onclick="fakeLogin()">Iniciar Sesión</button>
+      </div>
+
+      <!-- Tab: Registro -->
+      <div class="tab-content" id="tab-register">
+        <div class="form-group">
+          <label class="form-label">Nombre Completo</label>
+          <input type="text" class="form-input" placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Correo Electrónico</label>
+          <input type="email" class="form-input" placeholder="tu@correo.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Contraseña</label>
+          <input type="password" class="form-input" placeholder="Mínimo 8 caracteres">
+        </div>
+        <button class="btn-submit" onclick="fakeLogin()">Crear Cuenta</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════ -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo"><img src="img/logo.png" alt=""></div>
+        <p class="footer-desc">Moda masculina de alta calidad. Cada prenda es seleccionada con criterio, cada accesorio diseñado para durar. Estilo sin compromisos.</p>
+      </div>
+      <div>
+        <div class="footer-heading">Tienda</div>
+        <ul class="footer-links">
+          <li><a href="#">Novedades</a></li>
+          <li><a href="#">Ropa</a></li>
+          <li><a href="#">Accesorios</a></li>
+          <li><a href="#">Sale</a></li>
+          <li><a href="#">Colecciones</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Ayuda</div>
+        <ul class="footer-links">
+          <li><a href="#">Guía de Tallas</a></li>
+          <li><a href="#">Envíos</a></li>
+          <li><a href="#">Devoluciones</a></li>
+          <li><a href="#">Contacto</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Síguenos</div>
+        <ul class="footer-links">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">TikTok</a></li>
+          <li><a href="#">Pinterest</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 VARÓN. Todos los derechos reservados.</span>
+      <span class="footer-copy">Hecho con elegancia en Colombia 🇨🇴</span>
+    </div>
+  </footer>
+
+  <!-- Toast de notificaciones -->
+  <div class="toast" id="toast"></div>
+
+  <!-- JavaScript -->
+  <script src="js/app.js"></script>
+
+</body>
+</html>
