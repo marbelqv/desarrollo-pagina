@@ -29,6 +29,7 @@ const products = [
     rating: 4.9, reviews: 41,
     desc: 'Movimiento automático japonés, caja de acero inoxidable 316L, cristal zafiro resistente a rayones. Resistente al agua hasta 50m.',
     sizes: null,
+    image:'img/img1.jpeg',
     colors: ['#c9a84c','#1a1a1a','#8a8a8a'],
     reviewList: [
       { name: 'David P.', date: 'May 2025', stars: 5, text: 'Simplemente perfecto. El movimiento es suave y el diseño elegante sin ser ostentoso.' },
@@ -41,6 +42,7 @@ const products = [
     brand: 'VARÓN Casual', name: 'Camisa Lino Italiana',
     price: 185000, oldPrice: null, badge: null, badgeSale: false,
     rating: 4.6, reviews: 18,
+    image:'img/img2.jpeg',
     desc: 'Camisa de lino 100% importado de Italia. Textura natural, transpirable, perfecta para el clima colombiano. Corte relaxed fit.',
     sizes: ['S','M','L','XL'],
     colors: ['#e8e0d0','#1a1a1a','#8b6914'],
@@ -54,6 +56,7 @@ const products = [
     brand: 'VARÓN Footwear', name: 'Oxford Derby Cuero',
     price: 420000, oldPrice: 520000, badge: 'Sale', badgeSale: true,
     rating: 4.7, reviews: 33,
+    image:'img/img3.jpeg',
     desc: 'Zapato oxford derby en cuero full grain. Suela de cuero cosida a mano. Horma italiana de última tendencia. Incluye bolsa de guardado.',
     sizes: ['39','40','41','42','43','44'],
     colors: ['#3d2b1f','#1a1a1a'],
